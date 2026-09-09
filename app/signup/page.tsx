@@ -1,11 +1,14 @@
 "use client"
 import axios from "axios"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
+
 
 
 export default function Signup(){
     const [username ,setusername] = useState("")
     const [password , setpassword] = useState("")
+    const router = useRouter();
 
 
 
@@ -25,12 +28,13 @@ justify-center items-center">
               </input>
 
 
-              <button onClick={()=>{
+              <button onClick={ async ()=>{
                 axios.post("http://localhost:3000/api/v1/signup", {
                     username,
                     password
                 })
-
+                       
+                router.push("/signin")
 
 
 
