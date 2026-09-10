@@ -28,13 +28,17 @@ justify-center items-center">
               </input>
 
 
-              <button onClick={ async ()=>{
-                axios.post("http://localhost:3000/api/v1/signup", {
-                    username,
-                    password
-                })
-                       
-                router.push("/signin")
+                            <button onClick={ async ()=>{
+                                try {
+                                    await axios.post("/api/v1/signup", {
+                                        username,
+                                        password
+                                    })
+
+                                    router.push("/signin")
+                                } catch (error) {
+                                    console.error("Signup failed", error)
+                                }
 
 
 
